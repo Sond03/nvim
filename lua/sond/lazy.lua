@@ -24,13 +24,13 @@ vim.g.maplocalleader = "\\"
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-	  {"shaunsingh/nord.nvim", config = function() 
-		  vim.cmd.colorscheme "nord"
+	  -- {"shaunsingh/nord.nvim", config = function() looks better on laptop not good on desktop
+	  {"catppuccin/nvim", config = function()
+		  -- vim.cmd.colorscheme "nord" -- for the laptop 
+          vim.cmd.colorscheme "catppuccin"
 	  	  -- vim.api.nvim_set_hl(0, "Normal",{ bg = "none"} )
 	  	  -- vim.api.nvim_set_hl(0, "NormalFloat",{ bg = "none"} )
           -- vim.api.nvim_set_hl(0, "Visual", { bg = "#454751"})
-
-
 	  end},
     -- import your plugins
      { import = "sond.plugins" },
