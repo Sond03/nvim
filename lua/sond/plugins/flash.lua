@@ -7,7 +7,10 @@ return {
       -- This enables flash labels for regular search with / and ?
       search = {
         enabled = true,
-        trigger = "  ",
+        trigger = " ",
+      },
+      highlight ={
+        matches = true,
       },
     },
     label = {
