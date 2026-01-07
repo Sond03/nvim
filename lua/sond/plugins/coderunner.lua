@@ -25,6 +25,7 @@ return {
           "javac $fileName &&",
           "java $fileNameWithoutExt",
         },
+        python = "python3 -u",
         c = "cd $dir && gcc $fileName -o $fileNameWithoutExt && ./$fileNameWithoutExt",
       },
     },
