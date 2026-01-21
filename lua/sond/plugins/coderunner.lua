@@ -26,7 +26,7 @@ return {
           "java $fileNameWithoutExt",
         },
         python = "python3 -u",
-        c = "cd $dir && gcc $fileName -g -O0 -Wall -Wextra -std=c89 -o $fileNameWithoutExt && ./$fileNameWithoutExt",
+        c = "cd $dir && gcc $fileName -g -O0 -Wall -Wextra -std=gnu89 -o $fileNameWithoutExt && ./$fileNameWithoutExt",
       },
     },
   },
