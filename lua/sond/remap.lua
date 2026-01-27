@@ -107,3 +107,5 @@ map('n', '<A-p>', '<Cmd>BufferPin<CR>', opts)
 -- Code runner hotkeys start file with f5 and close with esc 
 vim.keymap.set('n', '<F5>', ':RunCode<CR>', opts)
 vim.keymap.set('t', '<leader>qq', [[<C-\><C-n>:q!<CR>]], opts)
+
+vim.keymap.set('n', '"', 'ciw""<Esc>P', opts)
