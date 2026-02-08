@@ -6,8 +6,13 @@ return {
             require('mini.statusline').setup({ use_icons = true })
             require('mini.pairs').setup()
             require('mini.indentscope').setup(
-                {symbol = '│',}
-            )
-        end,
-    },
+                {symbol = '│',
+                draw = {
+                    delay = 0,
+                    animation = require('mini.indentscope').gen_animation.none(),
+                },
+            }
+        )
+    end,
+},
 }
