@@ -26,7 +26,7 @@ return {
           "java $fileNameWithoutExt",
         },
         python = "python3 -u",
-        c = "cd $dir && make $fileName && ./$fileNameWithoutExt",
+        c = "cd $dir && make $fileNameWithoutExt && ./$fileNameWithoutExt",
       },
     },
   },
