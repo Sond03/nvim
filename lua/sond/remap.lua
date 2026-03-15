@@ -109,3 +109,5 @@ vim.keymap.set('n', '<F5>', ':RunCode<CR>', opts)
 vim.keymap.set('t', '<leader>qq', [[<C-\><C-n>:q!<CR>]], opts)
 
 vim.keymap.set('n', '"', 'ciw""<Esc>P', opts)
+-- goto definition
+vim.keymap.set('n', '<leader>d', vim.lsp.buf.definition, {})
