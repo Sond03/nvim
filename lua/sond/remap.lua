@@ -2,11 +2,12 @@
 vim.g.mapleader = " "
 
 -- leader pv to go to files
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, {desc = "Open folder in Netrw"})
 
 --shift K move line up and J down
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", {desc = "Move full line down a line"})
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv",{desc = "Move full line up a line"})
+
 
 -- unsure so uncomment for now
 -- vim.api.nvim_set_keymap("n", "<leader>tf", "<Plug>PlenaryTestFile", { noremap = false, silent = false })
@@ -26,54 +27,63 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "=ap", "ma=ap'a")
 
 --lsp restart
-vim.keymap.set("n", "<leader>zig", "<cmd>LspRestart<cr>")
+-- vim.keymap.set("n", "<leader>zig", "<cmd>LspRestart<cr>", {desc = "Restart lsp"})
 
-vim.keymap.set("n", "<leader>vwm", function()
-    require("vim-with-me").StartVimWithMe()
-end)
-vim.keymap.set("n", "<leader>svwm", function()
-    require("vim-with-me").StopVimWithMe()
-end)
+-- vim.keymap.set("n", "<leader>vwm", function()
+--     require("vim-with-me").StartVimWithMe()
+-- end)
+-- vim.keymap.set("n", "<leader>svwm", function()
+--     require("vim-with-me").StopVimWithMe()
+-- end)
 
 -- pastes without copying into clipboard
-vim.keymap.set("x", "<leader>p", [["_dP]])
+vim.keymap.set("x", "<leader>p", [["_dP]], {desc = "Paste without copying"})
 
 -- next greatest remap ever : asbjornHaland
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]],{desc = "Copy word to clipboard"})
+vim.keymap.set("n", "<leader>Y", [["+Y]],{desc = "Copy line to clipboard"})
 
 -- Deletes without copying to clipboard
-vim.keymap.set({ "n", "v" }, "<leader>d", "\"_d")
+vim.keymap.set({ "n", "v" }, "<leader>d", "\"_d", {desc = "Deletes without copying to clipboard"})
 
 -- This is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 
 vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<M-h>", "<cmd>silent !tmux-sessionizer -s 0 --vsplit<CR>")
-vim.keymap.set("n", "<M-H>", "<cmd>silent !tmux neww tmux-sessionizer -s 0<CR>")
+
+-- i dont user tmux yet 
+-- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+-- vim.keymap.set("n", "<M-h>", "<cmd>silent !tmux-sessionizer -s 0 --vsplit<CR>")
+-- vim.keymap.set("n", "<M-H>", "<cmd>silent !tmux neww tmux-sessionizer -s 0<CR>")
 
 --Next and prev error
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 
 --Next and previous
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", {desc = "Next in location list"})
+vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", {desc = "Previous in location list"})
 
 -- Changes the word under the cursor on every iteration
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],{
+    desc = "Changes every iteration of a word inside the same file with a new one"
+})
 
 -- Makes the file executable
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
-vim.keymap.set("n", "f4", "<cmd>!make %<CR>", { silent = true })
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true , desc = "Exit and make executable"})
 
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
-end)
+end, {desc = "Reload config"})
+
+vim.keymap.set('n', '<leader>u', function()
+  vim.cmd('UndotreeToggle')
+  vim.cmd('UndotreeFocus')
+end, { desc = 'Toggle and focus Undotree' })
 
 -- barbar keymaps
+
 
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
@@ -110,4 +120,4 @@ vim.keymap.set('t', '<leader>qq', [[<C-\><C-n>:q!<CR>]], opts)
 
 vim.keymap.set('n', '"', 'ciw""<Esc>P', opts)
 -- goto definition
-vim.keymap.set('n', '<leader>d', vim.lsp.buf.definition, {})
+vim.keymap.set('n', '<leader>d', vim.lsp.buf.definition, {desc = "Go to definition"})

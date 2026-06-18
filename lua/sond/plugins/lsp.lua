@@ -22,6 +22,7 @@ return {
                 "clangd",
                 "jdtls",
             },
+
             handlers = {
                 -- Default handler
                 function(server_name)
@@ -46,6 +47,14 @@ return {
                 end,
             }
         })
+
+        vim.lsp.config.qml = {
+            cmd = { 'qml-language-server' },
+            filetypes = { 'qml' },
+            root_markers = { 'qmldir', '.git' },
+        }
+        vim.lsp.enable('qml')
+        -- Manual qml server that works with quickshell qml-language-server is needed on the system
 
         -- 2. Diagnostic Configuration
         vim.diagnostic.config({
