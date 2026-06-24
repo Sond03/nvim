@@ -27,6 +27,7 @@ return {
         },
         python = "python3 -u",
         c = "cd $dir && make $fileNameWithoutExt && ./$fileNameWithoutExt",
+        qml = "cd $dir && qml6 $fileName",
       },
     },
   },
