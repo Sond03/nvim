@@ -1,5 +1,6 @@
 return {
   "nvim-treesitter/nvim-treesitter",
+  branch = "main",
   build = ":TSUpdate", -- Command to run after installation/updates to fetch parsers
   opts = {
     ensure_installed = { "c", "lua", "vim", "vimdoc", "query" }, -- Languages to install
