@@ -1,9 +1,6 @@
 -- setting the leader key to space
 vim.g.mapleader = " "
 
--- leader pv to go to files
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, {desc = "Open folder in Netrw"})
-
 --shift K move line up and J down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", {desc = "Move full line down a line"})
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv",{desc = "Move full line up a line"})
@@ -48,7 +45,6 @@ vim.keymap.set({ "n", "v" }, "<leader>d", "\"_d", {desc = "Deletes without copyi
 
 -- This is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>")
-
 
 vim.keymap.set("n", "Q", "<nop>")
 
@@ -121,3 +117,14 @@ vim.keymap.set('t', '<leader>qq', [[<C-\><C-n>:q!<CR>]], opts)
 vim.keymap.set('n', '"', 'ciw""<Esc>P', opts)
 -- goto definition
 vim.keymap.set('n', '<leader>d', vim.lsp.buf.definition, {desc = "Go to definition"})
+
+-- previos buffer
+vim.keymap.set('n', '<leader><tab>', '<cmd>b#<CR>', { desc = 'Alternate buffer' })
+
+
+-- Escape in normal mode getting rid of search 
+vim.keymap.set('n', '<Esc>', function()
+    vim.fn.setreg('/', '')   -- Wipes the search memory register
+    vim.cmd('nohlsearch')    -- Turns off current highlight rendering
+    return '<Esc>'           -- Sends the actual Esc key through so it behaves normally
+end, { expr = true, silent = true, desc = "Clear search highlights on Esc" })

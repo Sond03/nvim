@@ -19,3 +19,22 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.b.miniindentscope_disable = true
   end,
 })
+
+local hl_group = vim.api.nvim_create_augroup("SearchHighlightToggle", { clear = true })
+
+vim.api.nvim_create_autocmd("InsertEnter", {
+    group = hl_group,
+    pattern = "*",
+    callback = function()
+        vim.opt.hlsearch = false
+    end,
+})
+
+vim.api.nvim_create_autocmd("InsertLeave", {
+    group = hl_group,
+    pattern = "*",
+    callback = function()
+        vim.fn.setreg('/', '')
+        vim.opt.hlsearch = true
+    end,
+})

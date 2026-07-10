@@ -17,8 +17,8 @@ vim.o.undodir = undodir
 vim.o.undofile = true
 vim.fn.mkdir(undodir, "p")
 
-vim.o.hlsearch = false
 vim.o.incsearch = true
+vim.o.hlsearch = true
 
 vim.o.termguicolors = true
 
@@ -37,6 +37,19 @@ vim.diagnostic.config({
     source = "always", -- shows where the error comes from
   },
 })
+
+vim.g.clipboard = {
+  name = 'wl-clipboard',
+  copy = {
+     ['+'] = 'wl-copy',
+     ['*'] = 'wl-copy',
+   },
+  paste = {
+     ['+'] = 'wl-paste --no-newline',
+     ['*'] = 'wl-paste --no-newline',
+  },
+  cache_enabled = 1,
+}
 
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_python3_provider = 0
