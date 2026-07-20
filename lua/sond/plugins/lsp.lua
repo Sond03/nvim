@@ -49,12 +49,27 @@ return {
         })
 
         vim.lsp.config.qml = {
+            cmd = { 'qmlls6' , '-E'},
+            filetypes = { 'qml' },
+            root_markers = { 'shell.qml', 'qmldir', '.git' },
+            handlers = {
+                ["textDocument/publishDiagnostics"] = function() end,
+            },
+            on_attach = function(client, _)
+                -- Disable semantic tokens only for qmlls6
+                client.server_capabilities.semanticTokensProvider = nil
+            end,
+        }
+        vim.lsp.enable('qml', { capabilities = capabilities })
+        -- qmlls6 for autocomplete since qml-language-server doesnt fint qtquick
+
+        vim.lsp.config.qml_syntax = {
             cmd = { 'qml-language-server' },
             filetypes = { 'qml' },
-            root_markers = { 'qmldir', '.git' },
+            root_markers = { 'shell.qml', 'qmldir', '.git' },
         }
-        vim.lsp.enable('qml')
-        -- Manual qml server that works with quickshell qml-language-server is needed on the system
+        vim.lsp.enable('qml_syntax', { capabilities = capabilities })
+        -- enabling qml-language server for syntax highlighting since qmlls6 is very very very very slow
 
         -- 2. Diagnostic Configuration
         vim.diagnostic.config({
