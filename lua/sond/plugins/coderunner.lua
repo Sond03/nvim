@@ -28,6 +28,7 @@ return {
         python = "python3 -u",
         c = "cd $dir && make $fileNameWithoutExt && ./$fileNameWithoutExt",
         qml = "cd $dir && qml6 $fileName",
+        cpp = "cd $dir && g++ -std=c++26 $fileName -o $fileNameWithoutExt && ./$fileNameWithoutExt",
       },
     },
   },

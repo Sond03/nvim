@@ -1,0 +1,15 @@
+{
+  "Main Function": {
+    "prefix": "main",
+    "body": [
+      "#include <iostream>",
+      "using namespace std;",  
+      "",
+      "int main(){",
+      "\t${0:}",
+      "\treturn 0;",
+      "}"
+    ],
+    "description": "Standard C++ main function with namespace std"
+  }
+}
